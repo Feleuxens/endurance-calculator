@@ -1,3 +1,5 @@
+[![Build image](https://github.com/Feleuxens/endurance-calculator/actions/workflows/build.yml/badge.svg)](https://github.com/Feleuxens/endurance-calculator/actions/workflows/build.yml)
+
 # Special Endurance Calculator (KsA)
 
 Estimate a runner's race times across neighbouring track distances from a single
