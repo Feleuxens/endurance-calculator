@@ -1,1 +1,64 @@
 @import "tailwindcss";
+
+@theme {
+    --color-paper: #f4f5f2;
+    --color-surface: #ffffff;
+    --color-ink: #16202b;
+    --color-graphite: #5b6670;
+    --color-line: #cfd4cc;
+    --color-line-strong: #b9c0b6;
+    --color-accent: #2e7d5b;
+
+    --font-sans: 'Roboto Variable', 'sans-serif';
+    --font-serif: 'Playfair Display Variable', 'serif';
+
+}
+
+@layer base {
+    body {
+        @apply bg-paper text-ink font-sans antialiased;
+    }
+    h1, h2, h3 {
+        @apply text-ink;
+    }
+    p {
+        @apply text-graphite
+    }
+    a, span {
+        @apply text-accent
+    }
+}
+
+.grid-paper {
+    background-color: var(--color-paper);
+    background-image:
+            linear-gradient(var(--color-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 26px 26px;
+}
+
+@layer components {
+    .calculator-panel {
+        @apply bg-surface border border-line-strong;
+        border-radius: 12px;
+    }
+
+    .field-label {
+        @apply block font-sans text-[11px] uppercase tracking-[0.06em] text-graphite mb-1.5;
+    }
+    .control {
+        @apply flex items-center justify-between bg-surface border border-line-strong
+        px-3 py-2.5 text-[15px] font-medium text-ink transition-colors;
+        border-radius: 6px;
+    }
+    .control:hover { @apply border-graphite; }
+    .control__chevron { @apply text-line-strong; }
+
+    /* Result readouts */
+    .metric-label { @apply font-sans text-[11px] tracking-wider text-graphite; }
+    .metric-value { @apply font-sans text-ink font-semibold text-[30px] leading-tight tracking-[-0.01em]; }
+    .metric-range { @apply font-sans text-xs text-graphite mt-0.5; }
+
+    .section-eyebrow { @apply font-sans text-[11px] uppercase tracking-[0.08em] text-accent; }
+
+}

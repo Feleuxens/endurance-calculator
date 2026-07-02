@@ -1,32 +1,49 @@
-# Astro Starter Kit: Basics
+# Special Endurance Calculator (KsA)
 
-```sh
-npm create astro@latest -- --template basics
-```
+Estimate a runner's race times across neighbouring track distances from a single
+known result, using special-endurance coefficients (*Koeffizient der speziellen
+Ausdauer*) measured across elite athletes.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🏃 What it does
+
+**Predict**: enter one time (e.g. 800&nbsp;m in 2:00.0) and get the estimated
+  times for the adjacent distances, with a min–max band from the study's extremes.
+
+All maths runs in pace per 100&nbsp;m, since that's the unit the coefficients act on.
+
+## 📄 Source
+
+The coefficients are taken from Tables 2 & 3 of the original study.
+
+> **Original paper:** [https://mediatum.ub.tum.de/doc/1233679/1233679.pdf](https://mediatum.ub.tum.de/doc/1233679/1233679.pdf)
+
+Values were transcribed and verified against the source. The min-max band is the
+widest plausible spread from the reported extremes, not a statistical confidence
+interval.
 
 ## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
 │   └── favicon.svg
 ├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── components
+│   │   ├── Field.astro
+│   │   ├── Calculator.tsx
+│   │   └── PredictionChart.tsx
+│   ├── layouts
+│   │   └── Layout.astro
+│   ├── lib
+│   │   ├── coefficients.ts
+│   │   ├── calc.ts
+│   │   └── models.ts
+│   ├── pages
+│   │   └── index.astro
+│   └── styles
+│       └── global.css
 └── package.json
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 
@@ -40,7 +57,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

@@ -1,0 +1,16 @@
+---
+interface Props {
+    label: string;
+    mono?: boolean;
+    chevron?: boolean;
+}
+const { label, mono = false, chevron = true } = Astro.props;
+---
+
+<div>
+    <label class="field-label">{label}</label>
+    <div class:list={["control", mono && "control--time"]}>
+        <slot />
+        {chevron && <span class="control__chevron" aria-hidden="true">▾</span>}
+    </div>
+</div>

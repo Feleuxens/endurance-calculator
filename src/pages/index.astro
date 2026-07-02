@@ -1,8 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Test from '../components/Test.astro';
+import Layout from "../layouts/Layout.astro";
+import Calculator from "../components/Calculator";
 ---
 
 <Layout>
-	<Test/>
+	<main class="mx-auto max-w-5xl w-full px-6 py-10">
+		<div class="mb-8 max-w-2xl">
+			<p class="section-eyebrow">Predict race times across distances</p>
+			<h1 class="text-[26px] font-semibold tracking-tight mt-1 mb-3">
+				Estimate a runner's times from one known result
+			</h1>
+			<p class="text-[15px] leading-relaxed">
+				Enter one race time and the calculator scales it to neighbouring
+				distances using special-endurance coefficients measured across elite
+				athletes. Chain several distance pairs to reach further up or down the
+				ladder.
+			</p>
+		</div>
+
+		<section class="overflow-hidden calculator-panel">
+			<Calculator client:load />
+		</section>
+
+		<section class="mt-12 grid md:grid-cols-2 gap-8 max-w-4xl">
+			<div>
+				<div class="mb-4">
+					<p class="section-eyebrow">Method</p>
+					<h2 class="text-[15px] font-semibold mt-1">How the estimate works</h2>
+				</div>
+				<p class="text-[15px] leading-relaxed">
+					Every time is reduced to a pace per 100&nbsp;m, scaled by the
+					coefficient for the chosen distance pair, then expanded to the target
+					distance. Coefficients always act on the 100&nbsp;m pace, never on the
+					raw time.
+				</p>
+			</div>
+			<div>
+				<div class="mb-4">
+					<p class="section-eyebrow">Range</p>
+					<h2 class="text-[15px] font-semibold mt-1">Reading the min–max band</h2>
+				</div>
+				<p class="text-[15px] leading-relaxed">
+					The band is the widest plausible spread from the study's extremes, not
+					a statistical confidence interval. Chaining more pairs compounds those
+					extremes, so longer extrapolations show a wider band by design.
+				</p>
+			</div>
+		</section>
+	</main>
 </Layout>
