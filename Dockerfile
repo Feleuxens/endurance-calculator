@@ -29,7 +29,7 @@ RUN chown -R astro:astro /usr/share/nginx && \
 RUN touch /var/run/nginx.pid && \
     chown -R astro:astro /var/run/nginx.pid
 
-COPY --from=build --chown=astro:astro /app/dist/client /usr/share/nginx/html
+COPY --from=build --chown=astro:astro /app/dist /usr/share/nginx/html
 
 # Drop root privileges
 USER astro
